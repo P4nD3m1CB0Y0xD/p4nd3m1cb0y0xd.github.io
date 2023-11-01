@@ -21,7 +21,7 @@ title                    : "P4nD3m1CB0Y0xD"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "P4nD3m1CB0Y0xD"
-description              : "Cybersec, pentest, red team, hacking"
+description              : "Malware, Reverse Engineering, CTI, Programming"
 url                      : "https://p4nd3m1cb0y0xd.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -95,9 +95,9 @@ analytics:
 # Site Author
 author:
   name             : "P4nD3m1CB0Y0xD"
-  avatar           : "/assets/images/pandemic-logo.png"
+  avatar           : "/assets/images/pandemic.png"
   bio              : "Just a nerd that loves to learn about malware"
-  email            : "mailto:khagustsec@gmail.com"
+  email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
