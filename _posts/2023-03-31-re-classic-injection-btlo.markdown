@@ -2,7 +2,7 @@
 title:  "Reverse Engineering - A Classic Injection (BTLO)"
 date:   2023-03-31 12:00:00 +0300
 header:
-  teaser: "/assets/images/1/2023-03-31_main-fuction-overview-btlo.webp"
+  teaser: "/assets/images/1/2023-03-31_main-actions-performed-by-the-malware-btlo.webp"
 categories: 
   - tutorial
 tags:

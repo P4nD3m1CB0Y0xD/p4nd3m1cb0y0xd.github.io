@@ -51,18 +51,7 @@ As this is a new ransomware variant, we need to keep up with its development in 
 As this is a new ransomware variant, we need to keep up with its development in it next attacks. Perform a hunting in your environment is a good idea to find some indicators
 
 # TTPs
-| **Tactic** | **Technique** | **Sub-Technique**
-| ----- |  ------- | ------- 
-| Execution| Command and Scripting Interpreter| Windows Command Shell
-| Defense Evasion| Process Injection| Process Hollowing
-| Defense Evasion| Indicator Removal| Clear Windows Event Logs
-| Privilege Escalation| Abuse Elevation Control Mechanism| Bypass User Account Control
-| Discovery| System Service Discovery| -
-| Discovery| Process Discovery| -
-| Discovery| File and Directory Discovery| -
-| Lateral Movement| Remote Services| SMB/Windows Admin Shares
-| Impact| Data Encrypted for Impact| -
-| Impact| Inhibit System Recovery| -
+<script src="https://gist.github.com/P4nD3m1CB0Y0xD/f8a8c1c42ae73366e7286eb5164090c7.js"></script>
 
 # IoC & IoA
 - SHA256: 495fbfecbcadb103389cc33828db139fa6d66bece479c7f70279834051412d72
