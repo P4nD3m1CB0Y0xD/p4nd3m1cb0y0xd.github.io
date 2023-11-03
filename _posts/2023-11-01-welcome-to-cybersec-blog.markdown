@@ -4,7 +4,7 @@ date:   2023-11-01 12:00:00 +0300
 header:
   teaser: "-"
 categories: 
-  - tutorial
+  - cybersec
 tags:
   - malware
   - reverse-engineering
