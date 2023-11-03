@@ -2,7 +2,7 @@
 title:  "Welcome to my cybersecurity blog"
 date:   2023-11-01 12:00:00 +0300
 header:
-  teaser: "/assets/images/2/2023-11-01_01.png"
+  teaser: "-"
 categories: 
   - tutorial
 tags:
