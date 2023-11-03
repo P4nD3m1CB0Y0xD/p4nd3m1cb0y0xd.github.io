@@ -24,11 +24,12 @@ I will be write about:
 
 Most of the tutorials require an understanding of the Python, C/C++, and Assembly programming languages:
 
-```cpp
-#include <iostream>
+```c
+#include <stdio.h>
 
-int main() {
-    std::cout << "Hello World!";
+int main() 
+{
+    printf("Hello World!");
     return 0;
 }
 ```

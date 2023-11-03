@@ -5,13 +5,12 @@ permalink: /about/
 author_profile: true
 ---
 
-The cybersecurity and security engineering tutorials:           
+This is a blog about cybersecurity topics
 
-![home](/assets/images/home.png){:class="img-responsive"}      
+I'm just a nerd who loves to understand how software works.
 
-I am a software developer, ethical hacker and cyber security enthusiast, mathematician. Love my wife and kids.
+In 2021, I started college in cyber defense, and after being presented with the world of malware analysis, reverse engineering, and other topics such as OSINT, threat intelligence, and forensics, I just fell in love. It was crazy.
 
-I want to express special thanks to my wife and kids, as well as to all my relatives who endure me when I'm strange, when I programming and hack, but they always support me in everything.
+So, now I want to share my knowledge and passion about the cyber world. I write a little bit about everything, but my focus is on malware analysis, development, and reverse.
 
-You can find me at GitHub:
-[cocomelonc](https://github.com/cocomelonc)
+You can find me at GitHub: [P4nD3m1CB0Y0xD](https://github.com/P4nD3m1CB0Y0xD)
