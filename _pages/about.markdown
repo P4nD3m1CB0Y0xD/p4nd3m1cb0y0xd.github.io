@@ -1,11 +1,9 @@
 ---
-title:  "about"
+title:  "About the blog"
 layout: about
 permalink: /about/
 author_profile: true
 ---
-
-## About the blog
 
 This is a blog about cybersecurity topics
 
