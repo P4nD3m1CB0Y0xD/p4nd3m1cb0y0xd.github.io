@@ -10,6 +10,7 @@ categories:
 tags:
   - malware
   - reverse-engineering
+  - PMA
 toc: true
 ---
 
