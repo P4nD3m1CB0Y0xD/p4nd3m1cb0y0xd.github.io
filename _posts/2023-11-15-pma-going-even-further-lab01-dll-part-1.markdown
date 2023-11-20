@@ -162,3 +162,5 @@ echo -n "<sleep|exec|q>" | sudo nc -lvnk4 80
 # Conclusion
 
 Well, that's my interpretation of the first lab from the PMA book. I aimed to recreate the source code based on my reverse engineering skills. Thanks for reading <3.
+
+The full source code can be found on my github [here](https://github.com/P4nD3m1CB0Y0xD/PMA-Book-Code/blob/main/Lab01-01/Lab01-dll/dllmain.cpp).
