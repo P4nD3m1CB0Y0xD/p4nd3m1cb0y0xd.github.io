@@ -159,6 +159,10 @@ echo -n "<sleep|exec|q>" | sudo nc -lvnk4 80
   }
 ```
 
+The final part of this malware is where it checks for the command received by its C2.
+
+![Checking the recv data](/assets/images/PMA/lab01-part-1/lab01dll-check-recv-data.png){:class="img-responsive"}
+
 # Conclusion
 
 Well, that's my interpretation of the first lab from the PMA book. I aimed to recreate the source code based on my reverse engineering skills. Thanks for reading <3.
