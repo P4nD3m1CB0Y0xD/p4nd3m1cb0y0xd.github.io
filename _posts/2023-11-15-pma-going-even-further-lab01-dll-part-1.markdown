@@ -3,7 +3,7 @@ title:  "PMA - Going even further: Lab01 part 1"
 date:   2023-11-20 12:00:00 +0300
 classes: wide
 header:
-  teaser: "/assets/images/PMA/lab01-part-1/"
+  teaser: "/assets/images/PMA/lab01-part-1/lab01dll-checking-mutex.png"
 ribbon: red
 categories: 
   - PMA
