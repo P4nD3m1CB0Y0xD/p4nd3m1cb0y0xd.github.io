@@ -1,6 +1,6 @@
 ---
 title:  "PMA - Going even further: Lab06 (1, 2, 3)"
-date:   2023-11-20 12:00:00 +0300
+date:   2023-11-28 12:00:00 +0300
 classes: wide
 header:
   teaser: "/assets/images/PMA/lab06-123/lab06-03-main-func.png"
