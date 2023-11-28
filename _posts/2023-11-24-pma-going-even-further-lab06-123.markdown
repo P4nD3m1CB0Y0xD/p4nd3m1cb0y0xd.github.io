@@ -78,7 +78,7 @@ So, after inputting the analyzed binary and doing a diff, it's clear that one mo
 
 ![Diff the main function](/assets/images/PMA/lab06-123/lab06-02-main-func.png){:class="img-responsive"}
 
-By looking at the APIs used in the function at `sub_401040`, it's easy to say that it may read some file content from the URL (http://www[.practicalmalwareanalysisc.]com/cc.htm). After reading the content, the malware tries to parse a HTML comment from the ``.htm` file that starts with `<!--`. 
+By looking at the APIs used in the function at `sub_401040`, it's easy to say that it may read some file content from the URL (http://www[.practicalmalwareanalysisc.]com/cc.htm). After reading the content, the malware tries to parse a HTML comment from the `.htm` file that starts with `<!--`. 
 
 If the return value is `TRUE`, the malware prints a message with the parsed command and sleeps for 60000 milliseconds.
 
