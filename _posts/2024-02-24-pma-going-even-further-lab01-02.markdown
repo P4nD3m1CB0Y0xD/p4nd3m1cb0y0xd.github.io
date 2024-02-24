@@ -121,9 +121,9 @@ Based on our analysis, the following TTPs are:
 
 | Tactic | Technique | Description |
 | --- | --- | --- |
-| Defense Evasion | https://attack.mitre.org/techniques/T1027/002/ | This malware uses a UPX packer to protect the final payload. |
-| Persistence / Privilege Escalation | https://attack.mitre.org/techniques/T1543/003/ | This malware creates a Windows service as part of persistence.  |
-| Impact | https://attack.mitre.org/techniques/T1499/003/ | This malware will wait until 2100 and then perform a DDoS on the target website by creating 20 threats.  |
+| Defense Evasion | [T1027.002](https://attack.mitre.org/techniques/T1027/002/) | This malware uses a UPX packer to protect the final payload. |
+| Persistence / Privilege Escalation | [T1543.003](https://attack.mitre.org/techniques/T1543/003/) | This malware creates a Windows service as part of persistence.  |
+| Impact | [T1499.003](https://attack.mitre.org/techniques/T1499/003/) | This malware will wait until 2100 and then perform a DDoS on the target website by creating 20 threats.  |
 
 ```
 rule Lab01_02_PMA {
