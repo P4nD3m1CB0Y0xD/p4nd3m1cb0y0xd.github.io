@@ -1,3 +1,18 @@
+---
+title:  "PMA - Going even further: Lab01-02"
+date:   2024-02-24 12:00:00 +0300
+classes: wide
+header:
+  teaser: "/assets/images/PMA/lab01-02/8.png"
+ribbon: red
+categories: 
+  - PMA
+tags:
+  - malware
+  - reverse-engineering
+toc: true
+---
+
 # PMA - Going even further: Lab01-02
 
 # Introduction
