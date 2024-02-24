@@ -13,8 +13,6 @@ tags:
 toc: true
 ---
 
-# PMA - Going even further: Lab01-02
-
 # Introduction
 
 In this blog, we'll reverse-engineer the second lab from PMA. This lab presents some new challenges, such as unpacking a UPX program. This is the easiest packer out there. We also will learn how to create a Windows service for persistence and privilege escalation. So, let's dive in.
