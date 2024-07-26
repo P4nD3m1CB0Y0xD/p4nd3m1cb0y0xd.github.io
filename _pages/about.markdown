@@ -5,7 +5,7 @@ permalink: /about/
 author_profile: true
 ---
 
-This is a blog about cybersecurity topics
+This is a blog about cybersecurity topics.
 
 I'm just a nerd who loves to understand how software works.
 
