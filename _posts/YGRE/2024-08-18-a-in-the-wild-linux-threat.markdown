@@ -13,8 +13,6 @@ tags:
 toc: true
 ---
 
-# An In The Wild Linux Threat
-
 ![image.png](/assets/images/YGRE/240818/image.png)
 
 # Key Finds
