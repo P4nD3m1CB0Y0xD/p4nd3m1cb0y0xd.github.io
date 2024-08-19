@@ -13,7 +13,7 @@ tags:
 toc: true
 ---
 
-![image.png](/assets/images/YGRE/240818/image.png)
+![image.png](/assets/images/YGRE/240818/image.png){ width="800" height="600" style="display: block; margin: 0 auto" }
 
 # Key Finds
 
