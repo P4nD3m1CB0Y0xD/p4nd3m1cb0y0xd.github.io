@@ -30,10 +30,9 @@ toc: true
 Days ago, I saw an interesting post on [X by @Huntio](https://x.com/Huntio/status/1823280152845107543) about an opendir found at IP address `106[.14.176.]208`, with some suspicious ELF files communicating with this address at port `7744`. Also, in the same tweet, [@abuse_ch mentioned](https://x.com/i/bookmarks?post_id=1823322611754918332) that this IP has been seen hosting a Cobalt Strike server on ports `80` and `4444`.
 
 ![Sharing on Twitter/X](/assets/images/YGRE/240818/image%201.png)
-
 Sharing on Twitter/X
 
-I decided to investigate those finds and see if we could spot some lights in something more. The tweet also shared two SHA1hashes of the ELF files found on the server.
+I decided to investigate those finds and see if we could spot some lights in something more. The tweet also shared two SHA1 hashes of the ELF files found on the server.
 
 - amd64 - [7b276653c3e09010c4ec0afe3f44859ec1f5d65d](https://www.virustotal.com/gui/file/facafec4183ca19a003b941f3c668917a3b5ab891e7c939d1e6fc37692416942)
 - linux_i386 - [3fd87c6e3d681d7f7909902899e1bce6c5095cf5](https://www.virustotal.com/gui/file/4c0ace878616b963dd6ed320ace24309eaeacfc143255d1639d83130a244719c)
@@ -41,11 +40,9 @@ I decided to investigate those finds and see if we could spot some lights in som
 At the time of writing, both files are being detected by `8/68` AV engines, which is a very low detection rate for this threat. We need to consider the relevance of this threat that targets two common architectures: 32-bit and 64-bit.
 
 ![32-bit version](/assets/images/YGRE/240818/image%202.png)
-
 32-bit version
 
 ![64-bit version](/assets/images/YGRE/240818/image%203.png)
-
 64-bit version
 
 After downloading those samples, we took them to our lab environment and started to dig into them.
@@ -60,7 +57,6 @@ Today, in this post, I want to share some of my analysis processes for Linux bin
 Let us start by performing a basic triage on those files.
 
 ![Basic triage](/assets/images/YGRE/240818/image%204.png)
-
 Basic triage
 
 As we can see above, our investigation got easier because our samples were *not stripped*, which helped us recover the original function and data names.
@@ -68,17 +64,16 @@ As we can see above, our investigation got easier because our samples were *not 
 We also use CAPA to help us understand the capabilities employed by this malware. However, unlike the Windows result, many false positives were returned to us. That is why we cannot trust 100% on our tools.
 
 ![image.png](/assets/images/YGRE/240818/image%205.png)
+Capa results
 
 The capabilities highlighted were the ones that we could spot based on our reversing (moreover). Other results are probably from the library functions statically linked in the binary.
 
 Taking the binary to IDA, the main function is very simple based on its size.
 
 ![Malware’s main function](/assets/images/YGRE/240818/image%206.png)
-
 Malware’s main function
 
 ![Decompiler code](/assets/images/YGRE/240818/image%207.png)
-
 Decompiler code
 
 The decompiler code from IDA shows us how extremely simple this malware is. It starts at block (1) by initializing a socket communication over TCP [[T1095](https://attack.mitre.org/techniques/T1095/)] with the desired address and port [[T1095](https://attack.mitre.org/techniques/T1571/)]. After that, it tries to connect to its C2.
@@ -96,11 +91,9 @@ In block (4), the malware receives a second payload (which we couldn’t put our
 To better understand how this sample behaves, I patched the binary's IP address to point to my lab address. Then, I executed it with sudo privileges using the command `strace`. I also wrote a simple “Hello, world” program to understand the entire execution. Below, we can find the execution results:
 
 ![strace results from the malware](/assets/images/YGRE/240818/image%208.png)
-
 strace results from the malware
 
 ![strace result from the execution of our custom payload.](/assets/images/YGRE/240818/image%209.png)
-
 strace result from the execution of our custom payload.
 
 After digging into this sample, I came across this code representation. **Obs:** This was based on my reverse engineering skills; it is not the original source code.
