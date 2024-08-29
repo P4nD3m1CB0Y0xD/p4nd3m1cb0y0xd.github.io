@@ -231,7 +231,7 @@ rule Linux_Downloader {
         hash = "12cbba0f00dbf73ce66ed33e115dee2e9a25add2" // arm64 version
 
     strings:
-        $s1 = "/user/sbin/systemd" ascii
+        $s1 = "/usr/sbin/systemd" ascii
         $s2 = "./systemd" ascii
         $s3 = "[kworker/0:2]" ascii
         $arch1 = "l64" ascii
