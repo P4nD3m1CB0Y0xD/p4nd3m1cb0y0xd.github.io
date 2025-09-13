@@ -98,7 +98,7 @@ The main window has 3 functionalities:
 
 ![2025-09-12_img_04.png](/assets/images/ctf-mhl/2025-09-12_img_04.png)
 
-The l`oadYaml()` method uses SnakeYAML, a popular Java library to parse YAML Ain’t Markup Language format (YAML) files. This is our vulnerable function. This library is known to be vulnerable to deserialization attacks when it processes untrusted input data.
+The `loadYaml()` method uses SnakeYAML, a popular Java library to parse YAML Ain’t Markup Language format (YAML) files. This is our vulnerable function. This library is known to be vulnerable to deserialization attacks when it processes untrusted input data.
 
 ```java
 public final void loadYaml(Uri uri) throws FileNotFoundException {
