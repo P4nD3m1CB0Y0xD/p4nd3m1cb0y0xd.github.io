@@ -88,7 +88,7 @@ Let’s install the app into our Android virtual machine (AVM).
 
 ![2025-09-12_img_03.png](/assets/images/ctf-mhl/2025-09-12_img_03.png)
 
-After installing the app and executing it, it first asks for permission to access media on the device.
+After installing the app and executing it, first it asks for permission to access media on the device.
 
 The main window has 3 functionalities:
 
@@ -112,7 +112,7 @@ public final void loadYaml(Uri uri) throws FileNotFoundException {
             dumper.setIndent(2);
             dumper.setPrettyFlow(true);
             Yaml yaml = new Yaml(dumper);
-            **Object deserializedData = yaml.load(inputStream);** // << vulnerable
+            Object deserializedData = yaml.load(inputStream); // << vulnerable
             String serializedData = yaml.dump(deserializedData);
             ActivityMainBinding activityMainBinding = this.binding;
             if (activityMainBinding == null) {
@@ -212,3 +212,5 @@ With this crafted YAML payload file, we achieve remote code execution, and for j
 # Conclusion
 
 With this challenge, we learn how a seemingly benign feature can become a critical vulnerability when unsafe deserialization is involved. By leveraging SnakeYAML’s unrestricted type construction and identifying a convenient in-app gadget (`LegacyCommandUtil`), we turned a simple file import into reliable RCE.
+
+If you find any misunderstanding, feel free to reach out to me :). 
