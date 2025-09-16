@@ -136,7 +136,7 @@ private final void handleIntent() {
 }
 ```
 
-Based on the comments in the code above, we can already see the immage of how this application handles the user input.
+Based on the comments in the code above, we can already see the image of how this application handles the user input.
 
 # Code Flow
 
