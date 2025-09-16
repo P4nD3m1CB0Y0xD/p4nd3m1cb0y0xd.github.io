@@ -1,10 +1,15 @@
 ---
-title:  "About the blog"
+title: "About the Blog"
 layout: about
 permalink: /about/
 author_profile: true
 ---
 
-This is a blog about reverse engineering. Let's dive deep into some shadows and spot some lights.
+## Welcome to the Shadows and Lights of Reverse Engineering  
 
-You can find me at GitHub: [P4nD3m1CB0Y0xD](https://github.com/P4nD3m1CB0Y0xD)
+This blog is dedicated to exploring the fascinating world of **reverse engineering**.  
+Here, I dive into the shadows of low-level systems, malware analysis, and exploitation techniques—while also shining some light on practical insights, learning resources, and creative experiments.  
+
+## Connect with Me  
+
+You can find my projects and contributions on [P4nD3m1CB0Y0xD](https://github.com/P4nD3m1CB0Y0xD).  
