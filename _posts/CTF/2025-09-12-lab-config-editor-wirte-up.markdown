@@ -3,7 +3,7 @@ title:  "Lab - Config Editor: Write-up"
 date:   2025-09-12 12:00:00 +0300
 classes: wide
 header:
-  teaser: "/assets/images/ctf-mhl/2025-09-12_img_01.png"
+  teaser: "/assets/images/ctf-mhl/config-editor-lab/2025-09-12_img_01.png"
 ribbon: green
 categories: 
   - CTF
@@ -21,7 +21,7 @@ Welcome to this write-up blog post. We will walk through my methodology to explo
 
 Our objective here is to document my process and help you understand how a third-party library can be exploited to execute arbitrary code remotely.
 
-![2025-09-12_img_01.png](/assets/images/ctf-mhl/2025-09-12_img_01.png)
+![2025-09-12_img_01.png](/assets/images/ctf-mhl/config-editor-lab/2025-09-12_img_01.png)
 
 # Initial Analysis
 
@@ -84,9 +84,9 @@ Let’s install the app into our Android virtual machine (AVM).
 
 - `adb install com.mobilehackinglab.configeditor.apk`
 
-![2025-09-12_img_02.png](/assets/images/ctf-mhl/2025-09-12_img_02.png)
+![2025-09-12_img_02.png](/assets/images/ctf-mhl/config-editor-lab/2025-09-12_img_02.png)
 
-![2025-09-12_img_03.png](/assets/images/ctf-mhl/2025-09-12_img_03.png)
+![2025-09-12_img_03.png](/assets/images/ctf-mhl/config-editor-lab/2025-09-12_img_03.png)
 
 After installing the app and executing it, first it asks for permission to access media on the device.
 
@@ -96,7 +96,7 @@ The main window has 3 functionalities:
 - **Save:** saves a `.YML` file, handled by the `saveYaml()` method
 - **Text block:** used to edit/write a YAML config file
 
-![2025-09-12_img_04.png](/assets/images/ctf-mhl/2025-09-12_img_04.png)
+![2025-09-12_img_04.png](/assets/images/ctf-mhl/config-editor-lab/2025-09-12_img_04.png)
 
 The `loadYaml()` method uses SnakeYAML, a popular Java library to parse YAML Ain’t Markup Language format (YAML) files. This is our vulnerable function. This library is known to be vulnerable to deserialization attacks when it processes untrusted input data.
 
@@ -207,7 +207,7 @@ With this crafted YAML payload file, we achieve remote code execution, and for j
 
 ```
 
-![2025-09-12_img_05.png](/assets/images/ctf-mhl/2025-09-12_img_05.png)
+![2025-09-12_img_05.png](/assets/images/ctf-mhl/config-editor-lab/2025-09-12_img_05.png)
 
 # Conclusion
 
