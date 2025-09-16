@@ -136,7 +136,7 @@ private final void handleIntent() {
 }
 ```
 
-Based on the comments in the code above, we can already see the imgage of how this application handles the user input.
+Based on the comments in the code above, we can already see the immage of how this application handles the user input.
 
 # Code Flow
 
@@ -230,7 +230,7 @@ We can copy this line: `printf "< %s >\n"` and try escape inside our bash.
 
 ![img8.png](/assets/images/ctf-mhl/post-board-lab/img8.png)
 
-Any of those bash scape can work:
+Any of those bash escape can work:
 
 ```
 printf "< %s >\n" "`whoami`"
