@@ -1,0 +1,34 @@
+# Hugo build output
+/public/
+/resources/
+
+# Hugo Modules
+/hugo_cache/
+/.hugo_build.lock
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+
+# Node (if your theme uses npm for assets)
+node_modules/
+package-lock.json
+npm-debug.log
+yarn.lock
+
+# VSCode
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# Logs
+*.log
+
+# Deployment artifacts
+*.tar.gz
+
+# Local env or secret files (if any)
+.env
+*.local
+
