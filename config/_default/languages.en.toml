@@ -1,0 +1,26 @@
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "The Shadow's Light Security"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  logo = "img/logo.png"
+  description = "A blog about threat research"
+  # secondaryLogo = "img/secondary-logo.png"
+  # copyright = "Copy, _right?_ :thinking_face:"
+
+[params.author]
+  name = "P4nd3m1cb0y"
+  image = "img/pandemic_logo.png"
+  headline = "Highlighting the digital darkness"
+  links = [
+    { github = "https://github.com/P4nD3m1CB0Y0xD" },
+    { x-twitter = "https://x.com/P4nd3m1cb0y" },
+  ]
+  #   email = "youremail@example.com"
+  #   imageQuality = 96
+  #   bio = "A little bit about you"

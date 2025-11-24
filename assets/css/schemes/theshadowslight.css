@@ -1,0 +1,68 @@
+/* the-shadows-light — Biohazard (Code-Friendly Edition) */
+:root {
+  /* Global background & text */
+  --color-background: 0, 0, 0;          /* Pure black */
+  --color-neutral:   255, 255, 255;      /* White */
+
+  /* Gunmetal greys */
+  --color-neutral-50:  250, 250, 250;
+  --color-neutral-100: 245, 245, 245;
+  --color-neutral-200: 229, 229, 229;
+  --color-neutral-300: 212, 212, 216;
+  --color-neutral-400: 163, 163, 170;
+  --color-neutral-500: 113, 113, 122;
+  --color-neutral-600:  82,  82,  91;
+  --color-neutral-700:  63,  63,  70;
+  --color-neutral-800:  47,  56,  67;   /* Card background */
+  --color-neutral-900:   0,   0,   0;   /* Black */
+
+  /* Hazard orange (primary) */
+  --color-primary-50:  255, 248, 235;
+  --color-primary-100: 255, 239, 204;
+  --color-primary-200: 255, 220, 153;
+  --color-primary-300: 255, 198, 102;
+  --color-primary-400: 253, 176,  56;
+  --color-primary-500: 245, 158,  11;   /* MAIN hazard orange */
+  --color-primary-600: 217, 119,   6;
+  --color-primary-700: 180,  83,   9;
+  --color-primary-800: 146,  64,  14;
+  --color-primary-900: 120,  53,  15;
+
+  /* Deep slate (secondary) */
+  --color-secondary-500:  71,  85, 105;  /* Icon rim tone */
+  --color-secondary-700:  30,  41,  59;
+  --color-secondary-800:  15,  23,  42;
+  --color-secondary-900:   8,  12,  24;
+
+/* ------------ CODE SYNTAX COLORS (CYBERPUNK — CLEAN) ------------ */
+
+/* Strings — soft aqua, readable without being loud */
+--code-string: 140, 255, 230;     /* clean aqua */
+
+/* Keywords — refined neon magenta */
+--code-keyword: 220, 120, 255;    /* soft fuchsia */
+
+/* Function names — crisp cyan */
+--code-function: 120, 220, 255;   /* clean electric-cyan */
+
+/* Types — gentle violet */
+--code-type: 180, 160, 255;       /* lavender neon */
+
+/* Numbers — subtle lime accent */
+--code-number: 210, 255, 140;     /* soft lime */
+
+/* Operators — light neutral grey */
+--code-operator: 235, 235, 240;   /* clean light grey */
+
+/* Comments — cool desaturated slate */
+--code-comment: 130, 135, 150;    /* grey with slight blue tint */
+
+/* Line highlight — soft violet haze */
+--code-highlight-line: 24, 16, 40;  /* subtle purple background */
+
+}
+
+/* Global page background override */
+body {
+  background: rgb(var(--color-background));
+}
