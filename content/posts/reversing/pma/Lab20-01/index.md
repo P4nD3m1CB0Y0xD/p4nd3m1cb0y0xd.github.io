@@ -91,9 +91,9 @@ delete obj;
 
 Before we look at our compiled example, we first need to understand one more concept, the `__thiscall` calling convention. So, let me quote from [Microsoft documentation](https://learn.microsoft.com/en-us/cpp/cpp/thiscall?view=msvc-170):
 
-> *The **Microsoft-specific** **`__thiscall`** calling convention is used on C++ class member functions on the x86 architecture. It's the default calling convention used by member functions that don't use variable arguments (`vararg` functions).
-
-Under **`__thiscall`**, **the callee cleans the stack**, which is impossible for `vararg` functions. **Arguments are pushed on the stack from right to left**. **The `this` pointer is passed via register `ECX`**, and not on the stack. -* Microsoft
+> The Microsoft-specific `__thiscall` calling convention is used on C++ class member functions on the x86 architecture. It's the default calling convention used by member functions that don't use variable arguments (`vararg` functions).
+>
+> Under `__thiscall`, the callee cleans the stack, which is impossible for `vararg` functions. **Arguments are pushed on the stack from right to left**. **The `this` pointer is passed via register `ECX`**, and not on the stack. - Microsoft
 > 
 
 ### It's all an illusion
