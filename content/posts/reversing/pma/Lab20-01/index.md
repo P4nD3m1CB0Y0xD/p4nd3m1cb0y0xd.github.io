@@ -147,7 +147,7 @@ typedef struct class_MyCalc // 8 bytes
 
 As you can see, it becomes straightforward to spot those abstractions in assembly. 
 
-Perfect! Now we can move to what matters. You will see how easy it is to solve this lab, and how we can recreate a similar source code. So in simple terms, *this binary downloads a second-stage payload and saves it in the `C:\` system directory*.
+Perfect! Now we can move to what matters. You will see how easy it is to solve this lab, and how we can recreate a similar source code.
 
 ## Lab20-01 Questions
 
@@ -159,7 +159,7 @@ This lab is simple, but as you can see, we can learn a lot from it. Below is the
 
 This lab is simple, but as you can see, we can learn a lot from it. Below is the question from the book.
 
-To answer the first and second questions, we need to identify the object's creation and the this pointer. As we know from Microsoft documentation, the `this pointer` is passed in `ECX`, and if the method has any `varargs`, they are pushed onto the stack.
+To answer the first and second questions, we need to identify the object's creation and the `this pointer`. As we know from Microsoft documentation, the `this pointer` is passed in `ECX`, and if the method has any `varargs`, they are pushed onto the stack.
 
 {{< figure
     src="imgs/img01.png"
@@ -177,7 +177,7 @@ In the yellow block, the `new operator` allocates `4 bytes` of memory for an obj
     class="mx-auto"
 >}}
 
-This method is pretty straightforward. It just calls the `urlmon::URLDownloadToFileA` passing the attribute `url` as the parameter.
+This method is pretty straightforward. It just calls the `urlmon::URLDownloadToFileA` passing the attribute `url` as the parameter. So to answer the question three, in simple terms, *this binary downloads a second-stage payload and saves it in the `C:\` system directory*.
 
 ## The reversed code
 
