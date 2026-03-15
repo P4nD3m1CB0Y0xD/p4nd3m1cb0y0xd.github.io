@@ -15,7 +15,7 @@ tags: ["tangerine-turkey", "pivot", "hunting", "xmrig", "cryptojacking", "malici
 
 ## Introduction
 
-In today's blog post, we will perform some infrastructure threat hunting and try to clusterize some malicious crypto mining campaigns. The core idea here is to show you how you can expand your visibility, starting with just one indicator of compromise (IOC). Through this blog, we will hunt for the Tangerine Turkey campaign that is still ongoing (at the time of writing). So, let's shed some light on the shadows.
+In today's blog post, we will perform some infrastructure threat hunting and try to cluster malicious crypto-mining campaigns. The core idea here is to show you how you can expand your visibility, starting with just one indicator of compromise (IOC). In this blog, we will hunt for the Tangerine Turkey campaign, which is still ongoing (at the time of writing). So, let's shed some light on the shadows.
 
 ### What is a mining pool?
 
@@ -54,10 +54,10 @@ Let's take a general look at the threat landscape and how cybercriminals are abu
 
 A crypto miner turns malicious when installed on a computer without the owner's approval. To distinguish between legitimate miners and malicious ones, the term "*cryptojacking*" was coined. In the MITRE ATT&CK framework, the best description of this malicious activity appears in the [impact [TA0040]](https://attack.mitre.org/tactics/TA0040/) column under the sub-technique ["Resource Hijacking: Compute Hijacking" [T1496.001]](https://attack.mitre.org/techniques/T1496/001/). Below is a brief description of this technique.
 
-> *One common purpose for [Compute Hijacking](https://attack.mitre.org/techniques/T1496/001) is to validate transactions of cryptocurrency networks and earn virtual currency. Adversaries may consume enough system resources to negatively impact and/or cause affected machines to become unresponsive.* — MITRE ATT&CK
+> *One common purpose for [Compute Hijacking](https://attack.mitre.org/techniques/T1496/001) is to validate transactions of cryptocurrency networks and earn virtual currency. Adversaries may consume sufficient system resources to negatively impact affected machines and/or cause them to become unresponsive.* — MITRE ATT&CK
 >
 
-Those “malicious” software targets servers and cloud-based systems because of their high potential for available resources. However, personal computers and IoT devices can also be targets. You are probably wondering, why do I use double quotation marks in the word 'malicious', right? Well, let's take XMRig, for example. This is open-source mining software. It's a legitimate program, but it can become malicious when used with malicious intent to hijack a system's resources. This type of software would be better classified as a potentially unwanted program (PUP). This software is commonly abused by cybercriminals to mine for Monero cryptocurrency. But why Monero and not for Bitcoin?
+Those “malicious” software targets servers and cloud-based systems because of their high potential for available resources. However, personal computers and IoT devices can also be targets. You are probably wondering why I use double quotation marks around the word 'malicious', right? Well, let's take XMRig, for example. This is open-source mining software. It's a legitimate program, but it can become malicious when used with malicious intent to hijack a system's resources. This type of software would be better classified as a potentially unwanted program (PUP). This software is commonly abused by cybercriminals to mine for Monero cryptocurrency. But why Monero and not Bitcoin?
 
 ### Why Monero?
 
@@ -81,9 +81,9 @@ Monero key characteristics:
 - Hidden sender and receiver
 - Strong anonymity protections
 
-This means that, **third parties cannot easily determine who sent money, who received it, or how much was transferred**. This explains why cybercriminal groups favor Monero more than Bitcoin, as its privacy features directly weaken blockchain investigation methods. Another reason is that Monero mining performs effectively on CPUs, as it does not need specialized ASIC hardware.
+This means that, **third parties cannot easily determine who sent money, who received it, or how much was transferred**. This explains why cybercriminal groups favor Monero over Bitcoin, as its privacy features directly undermine blockchain-based investigative methods. Another reason is that Monero mining is effective on CPUs, since it does not require specialized ASIC hardware.
 
-But sometimes, cybercriminals don't care much about their anonymity and will try to mine different types of cryptocurrencies. A good example is the [PureCrypter (a.k.a PureMiner)](https://malpedia.caad.fkie.fraunhofer.de/details/win.purecrypter).
+But sometimes, cybercriminals don't care much about their anonymity and will try to mine various cryptocurrencies. A good example is the [PureCrypter (a.k.a PureMiner)](https://malpedia.caad.fkie.fraunhofer.de/details/win.purecrypter).
 
 PureCrypter malware was developed using the .NET framework to mine multiple cryptocurrencies, including BTC, Ergo (ERG), ETHW, ETC, Flux (FLUX), Kaspa (KAS), Monero (XMR), and Ravencoin (RVN). It includes a “botkiller” feature that enables the operator to remove other malware from the infected device. The miner can seamlessly switch between CPU and GPU mining and monitor user activity to detect idleness. The attacker charged US$150 for a one-year subscription and US$199 for a lifetime license.
 
@@ -95,7 +95,7 @@ Some other campaign that will focus on this blog is Tangerine Turkey. Let's dive
 
 Tangerine Turkey is a cryptomining operation that uses a VBScript (VBS) worm to spread laterally by infecting removable drives like USB sticks. Its main goal is to maintain persistence by creating a scheduled task that runs with the highest privileges at user login. The TLS fingerprint used by XMRig on the command line helps us better understand the infrastructure behind this campaign. For more details about this operation, you can refer to the blogs by Cybereason and Red Canary in the resources section of this blog.
 
-The Cybereason team made a great attack chain overview that we can use to better understand the campaign.
+The Cybereason team created a great overview of the attack chain that we can use to better understand the campaign.
 
 {{< figure
     src="imgs/img02.png"
@@ -116,7 +116,7 @@ The Command & Control configuration was encrypted with AES. Once decrypted, I ch
 
 The config decrypt script is available on my [GitHub Gist](https://gist.github.com/P4nD3m1CB0Y0xD/8e3a04a5dcc264335597460ec2522521).
 
-That was when, surprisingly, the C2 was still up, and the next stage was downloaded. That makes sense when you think about it. Since the binary uses three different DNS resolvers, the threat actor only needs to change the IP addresses the domains point to. That is when the XMRig executable was dropped in the `C:\Windows\System32\wsvcz` directory, along with three other files.
+That was when, surprisingly, the C2 was still up and the next stage had been downloaded. That makes sense when you think about it. Since the binary uses three different DNS resolvers, the threat actor only needs to change the IP addresses the domains point to. That is when the XMRig executable was dropped in the `C:\Windows\System32\wsvcz` directory, along with three other files.
 
 {{< figure
     src="imgs/img06.png"
@@ -156,7 +156,7 @@ At this point, I decided to shift my focus to finding similar infrastructure. I 
 
 You're probably wondering why the TLS fingerprint caught my attention. So, let's first understand what this fingerprint is.
 
-TLS fingerprinting is a helpful technique that allows us to recognize the unique traits of a client or server by examining how it carries out the Transport Layer Security (TLS) handshake. Instead of relying on changing IP addresses or domain names, this method looks at the pattern of the TLS handshake itself. Because of this, it becomes a valuable tool in network safety, threat detection, and identifying malware, as many tools, malware types, and applications have their own special TLS configurations.
+TLS fingerprinting is a useful technique that allows us to identify the unique characteristics of a client or server by examining how it performs the Transport Layer Security (TLS) handshake. Instead of relying on changes to IP addresses or domain names, this method examines the pattern of the TLS handshake itself. Because of this, it becomes a valuable tool for network security, threat detection, and malware identification, as many tools, malware types, and applications have their own TLS configurations.
 
 After searching for this fingerprint in Validin, the results can be exported to a dataset that we can work on.
 
@@ -176,11 +176,11 @@ Validin's results show more IP addresses linked to this TLS fingerprint. When se
     class="mx-auto"
 >}}
 
-After exporting and cleaning the dataset from Validin, the graph below illustrates the correlation between TLS fingerprints, domains, and IPs. I used a custom Python 3 script with pandas and the pyvis library to generate this plot.
+After exporting and cleaning the dataset from Validin, the graph below shows the correlations among TLS fingerprints, domains, and IPs. I used a custom Python 3 script with pandas and the pyvis library to generate this plot.
 
 <div class="sage-graph">
   <iframe
-    src="https://p4nd3m1cb0y0xd.github.io/blog/hunting-malicious-mining-pools/tls_xmgig_graph.html"
+    src="https://p4nd3m1cb0y0xd.github.io/datasets/blog/hunting-malicious-mining-pools/tls_xmgig_graph.html"
     loading="lazy"
     style="width:100%; height:650px; border:none;">
   </iframe>
@@ -190,14 +190,15 @@ As you can see, from a single domain and IP address using the TLS fingerprint, w
 
 ## Conclusion
 
-To wrap things up: starting from a single clue an XMRig TLS fingerprint tied to `r2.hashpoolpx[.]net` we were able to steadily expand our visibility into the broader infrastructure behind the Tangerine Turkey mining activity. By pivoting from one domain to its resolving IP, then using fingerprint-based hunting to uncover additional hosts and related subdomains, we built a small but meaningful cluster of indicators that would have been easy to miss if we only hunted on static IOCs.
+To wrap things up: starting from a single clue, an XMRig TLS fingerprint tied to `r2.hashpoolpx[.]net`, we were able to steadily expand our visibility into the broader infrastructure behind the Tangerine Turkey mining activity. By pivoting from one domain to its resolving IP address, then using fingerprint-based hunting to uncover additional hosts and related subdomains, we built a small but meaningful cluster of indicators that would have been easy to miss if we had only hunted static IOCs.
 
-The main takeaway is that threat hunting doesn’t have to start with a long list of indicators. With the right pivots (DNS, TLS fingerprints, and basic enrichment across sources like Validin and VirusTotal), you can turn a single observation into a clearer picture of how an operation is deployed and maintained even when adversaries try to stay flexible by rotating infrastructure. Hopefully this walkthrough gave you a practical blueprint you can reuse in your own investigations: start small, pivot carefully, validate each step, and let the infrastructure relationships guide you to what’s next.
+The main takeaway is that threat hunting doesn’t have to start with a long list of indicators. With the right pivots (DNS, TLS fingerprints, and basic enrichment across sources like Validin and VirusTotal), you can turn a single observation into a clearer picture of how an operation is deployed and maintained, even when adversaries try to stay flexible by rotating infrastructure. Hopefully, this walkthrough gave you a practical blueprint you can reuse in your own investigations: start small, pivot carefully, validate each step, and let the infrastructure relationships guide you to what’s next.
 
 ## IoCs
 
-| SHA256 Hash | `63AA8DA1AEDB07D075C13F700877A7525DF5B4F434C5F24026A77365517CB225` |
+| Description | IOC |
 | --- | --- |
+| SHA256 Hash | `63AA8DA1AEDB07D075C13F700877A7525DF5B4F434C5F24026A77365517CB225` |
 | Domain | `r1.hashpoolpx[.]net` |
 | Domain | `r2.hashpoolpx[.]net` |
 | Domain | `r3.hashpoolpx[.]net` |
