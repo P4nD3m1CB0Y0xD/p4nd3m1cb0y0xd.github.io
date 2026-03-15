@@ -1,6 +1,6 @@
 ---
 title: "Hunting Malicious Mining Pools: Pivoting Through Crypto Mining Infrastructure"
-date: 2026-03-17
+date: 2026-03-15
 draft: false
 categories: ["threat-hunting"]
 tags: ["tangerine-turkey", "pivot", "hunting", "xmrig", "cryptojacking", "malicious-infrastructure"]
